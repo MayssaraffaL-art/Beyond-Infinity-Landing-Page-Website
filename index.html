@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORION: Deep Space Exploration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-atom fa-spin"></i> ORION<span class="highlight">LABS</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero">Mission Control</a></li>
+            <li><a href="#featured">Gallery</a></li>
+            <li><a href="#solar-system">Solar Data</a></li>
+            <li><a href="#stats">Stats</a></li>
+        </ul>
+    </nav>
+
+    <header id="hero" class="hero-section">
+        <div class="hero-content hidden-element">
+            <h4 class="subtitle">EST. 2024 / NASA DATA VISUALIZATION</h4>
+            <h1 class="glitch" data-text="BEYOND INFINITY">BEYOND INFINITY</h1>
+            <p class="description">
+                Portal edukasi astronomi dengan citra definisi tinggi dari NASA, ESA, dan Hubble Heritage Team. 
+                Jelajahi keindahan tata surya tanpa batas.
+            </p>
+            <div class="cta-group">
+                <button class="btn-primary" onclick="scrollToSection('solar-system')">Explore Planets</button>
+                <button class="btn-secondary" onclick="scrollToSection('featured')">Best Image</button>
+            </div>
+        </div>
+        <div class="hero-visual hidden-element delay-200">
+            <div class="planet-simulation">
+                <div class="orbit">
+                    <div class="moon"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="featured" class="apod-section">
+        <div class="container">
+            <div class="section-header hidden-element">
+                <h2>FEATURED <span class="badge">NASA IMAGE</span></h2>
+                <p>Citra Pilihan: James Webb Space Telescope</p>
+            </div>
+            
+            <!-- Item 1 -->
+<div class="apod-wrapper hidden-element delay-200" style="margin-bottom: 40px;">
+    <div class="apod-media">
+        <img src="https://cdn.pixabay.com/photo/2011/12/15/11/04/eagle-nebula-11172_1280.jpg" alt="Pillars of Creation">
+    </div>
+    <div class="apod-info">
+        <h3>Pillars of Creation</h3>
+        <div class="meta-data">
+            <span><i class="far fa-copyright"></i> NASA, ESA, Hubble</span>
+        </div>
+        <p>
+            Foto ikonik yang menampilkan pilar-pilar gas dan debu raksasa di Nebula Elang.
+            Wilayah ini merupakan tempat lahirnya bintang-bintang baru yang berjarak sekitar
+            6.500–7.000 tahun cahaya dari Bumi.
+        </p>
+    </div>
+</div>
+
+<!-- Item 2 -->
+<div class="apod-wrapper hidden-element delay-300" style="margin-bottom: 40px;">
+    <div class="apod-media">
+        <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2022/07/STScI-01GA6KKWG229B16K4Q38CH3BXS.png?w=1536&h=890&fit=crop&crop=faces%2Cfocalpoint" alt="Carina Nebula">
+    </div>
+    <div class="apod-info">
+        <h3>Carina Nebula</h3>
+        <div class="meta-data">
+            <span><i class="far fa-copyright"></i> NASA, ESA, CSA, JWST</span>
+        </div>
+        <p>
+            Nebula Carina adalah wilayah pembentukan bintang yang sangat aktif dan penuh energi.
+            Gambar ini diambil oleh Teleskop James Webb dan menampilkan detail gas kosmik
+            serta debu yang membentuk bintang masif.
+        </p>
+    </div>
+</div>
+
+<!-- Item 3 -->
+<div class="apod-wrapper hidden-element delay-400">
+    <div class="apod-media">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Horsehead_and_flame_Nebulea_384mm_scope_Ha-RGB.jpg/960px-Horsehead_and_flame_Nebulea_384mm_scope_Ha-RGB.jpg" alt="Horsehead Nebula">
+    </div>
+    <div class="apod-info">
+        <h3>Horsehead Nebula</h3>
+        <div class="meta-data">
+            <span><i class="far fa-copyright"></i> NASA, ESA, Hubble</span>
+        </div>
+        <p>
+            Horsehead Nebula terkenal dengan bentuknya yang menyerupai kepala kuda.
+            Nebula ini terdiri dari awan gas dingin dan debu tebal yang menghalangi cahaya
+            bintang di belakangnya.
+        </p>
+    </div>
+</div>
+
+<div class="apod-wrapper hidden-element delay-400">
+    <div class="apod-media">
+        <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/bmng/bmng-topography-bathymetry/august/world.topo.bathy.200408.3x5400x2700.jpg?w=1536&h=768&fit=crop&crop=faces%2Cfocalpoint" alt="Horsehead Nebula">
+    </div>
+    <div class="apod-info">
+        <h3>The Blue Marble</h3>
+        <div class="meta-data">
+            <span><i class="far fa-copyright"></i> NASA, ESA, Hubble</span>
+        </div>
+        <p>
+            Horsehead Nebula terkenal dengan bentuknya yang menyerupai kepala kuda.
+            Nebula ini terdiri dari awan gas dingin dan debu tebal yang menghalangi cahaya
+            bintang di belakangnya.
+        </p>
+    </div>
+</div>
+            
+        </div>
+    </section>
+
+    <section id="solar-system" class="solar-section">
+        <div class="container">
+            <div class="section-header hidden-element">
+                <h2>Planetary Database</h2>
+                <p>Data Akurat Tata Surya (Sumber Gambar: NASA/JPL Public Domain)</p>
+            </div>
+            
+            <div class="planet-grid" id="planet-container"></div>
+        </div>
+    </section>
+
+    <section id="stats" class="stats-section">
+        <div class="stats-overlay"></div>
+        <div class="container stats-container">
+            <div class="stat-item hidden-element">
+                <i class="fa-solid fa-temperature-low"></i>
+                <h3 class="counter" data-target="270">0</h3>
+                <p>Suhu Rata-rata Angkasa (°K)</p>
+            </div>
+            <div class="stat-item hidden-element delay-100">
+                <i class="fa-solid fa-meteor"></i>
+                <h3 class="counter" data-target="4600">0</h3>
+                <p>Usia Tata Surya (Juta Thn)</p>
+            </div>
+            <div class="stat-item hidden-element delay-200">
+                <i class="fa-solid fa-globe"></i>
+                <h3 class="counter" data-target="8">0</h3>
+                <p>Planet Utama</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">ORION LABS</div>
+            <p>Dikembangkan untuk Edukasi Sains.</p>
+            <p class="disclaimer">Sumber Gambar: Wikimedia Commons (NASA Public Domain).</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+/* --- 1. SETUP & VARIABLES --- */
+:root {
+    --bg-dark: #050505;
+    --card-bg: rgba(20, 20, 35, 0.6);
+    --primary: #00f2ff; /* Cyan Neon */
+    --secondary: #7000ff; /* Purple Neon */
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+    --gradient-glow: linear-gradient(45deg, var(--primary), var(--secondary));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* --- 2. STARFIELD BACKGROUND ANIMATION (PURE CSS) --- */
+/* Trik membuat ribuan bintang tanpa gambar menggunakan box-shadow */
+@keyframes animStar {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-2000px); }
+}
+
+#stars, #stars2, #stars3 {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    background: transparent;
+}
+
+/* Keterangan: Script JS opsional bisa dipakai untuk generate box-shadow ini agar lebih random, 
+   tapi disini kita gunakan radial gradient simplifikasi untuk performa */
+#stars { background-image: radial-gradient(white 1px, transparent 1px); background-size: 50px 50px; opacity: 0.3; animation: animStar 100s linear infinite; }
+#stars2 { background-image: radial-gradient(white 1.5px, transparent 1.5px); background-size: 100px 100px; opacity: 0.4; animation: animStar 150s linear infinite; }
+
+/* --- 3. NAVBAR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.highlight { color: var(--primary); }
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; left: 0;
+    width: 0; height: 2px;
+    background: var(--primary);
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+/* --- 4. HERO SECTION & GLITCH EFFECT --- */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    position: relative;
+    background: radial-gradient(circle at center, rgba(112, 0, 255, 0.1) 0%, transparent 70%);
+}
+
+.hero-content { max-width: 600px; z-index: 2; }
+
+.subtitle {
+    color: var(--primary);
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+h1.glitch {
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+    position: relative;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    border-left: 3px solid var(--secondary);
+    padding-left: 20px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 15px 35px;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+}
+
+.btn-primary {
+    background: var(--gradient-glow);
+    color: #fff;
+    margin-right: 15px;
+}
+
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 242, 255, 0.3); }
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-secondary:hover { background: rgba(0, 242, 255, 0.1); }
+
+/* Planet Simulation CSS */
+.planet-simulation {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle at 30% 30%, #4facfe, #00f2ff);
+    border-radius: 50%;
+    box-shadow: 0 0 60px rgba(0, 242, 255, 0.4), inset -40px -40px 60px rgba(0,0,0,0.5);
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+}
+
+.orbit {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 450px; height: 450px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 10s linear infinite;
+}
+
+.moon {
+    width: 40px; height: 40px;
+    background: #ddd;
+    border-radius: 50%;
+    position: absolute;
+    top: 0; left: 50%;
+    box-shadow: inset -10px -10px 10px rgba(0,0,0,0.5);
+}
+
+@keyframes rotate { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+/* --- 5. APOD SECTION --- */
+.apod-section { padding: 100px 10%; background: rgba(0,0,0,0.2); }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-header h2 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 10px; }
+.badge { background: #e33d3d; font-size: 0.8rem; padding: 2px 8px; border-radius: 3px; vertical-align: middle; }
+
+.apod-wrapper {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.apod-wrapper {
+    margin-bottom: 40px;
+}
+
+
+.apod-media { min-height: 400px; position: relative; display: flex; align-items: center; justify-content: center; background: #000; }
+.apod-media img, .apod-media iframe { width: 100%; height: 100%; object-fit: cover; }
+.apod-info { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+.apod-info h3 { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+.meta-data { margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted); }
+.meta-data span { margin-right: 15px; }
+
+/* --- 6. PLANET CARDS (DYNAMIC) --- */
+.planet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.planet-card {
+    background: rgba(255,255,255,0.03);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.planet-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    border-color: var(--primary);
+}
+
+.planet-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: var(--gradient-glow);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: 0.4s;
+}
+
+.planet-card:hover::before { transform: scaleX(1); }
+
+.planet-img { width: 120px; height: 120px; margin: 0 auto 20px; border-radius: 50%; object-fit: cover; display: block; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+.planet-name { text-align: center; font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 15px; color: var(--text-main); }
+
+.planet-details { list-style: none; font-size: 0.9rem; color: var(--text-muted); }
+.planet-details li { margin-bottom: 8px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
+.planet-details span { color: var(--primary); font-weight: bold; }
+
+/* --- 7. ANIMATION UTILITIES --- */
+.hidden-element { opacity: 0; transform: translateY(50px); transition: all 1s ease; }
+.show-element { opacity: 1; transform: translateY(0); }
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+
+/* --- 8. STATS & FOOTER --- */
+.stats-section {
+    padding: 100px 0;
+    background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2000') fixed center/cover;
+    position: relative;
+    text-align: center;
+}
+.stats-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5,5,5,0.85); }
+.stats-container { position: relative; z-index: 2; display: flex; justify-content: space-around; flex-wrap: wrap; }
+.stat-item { padding: 20px; }
+.stat-item i { font-size: 3rem; color: var(--secondary); margin-bottom: 15px; }
+.stat-item h3 { font-size: 3rem; font-family: var(--font-heading); margin-bottom: 5px; }
+
+footer { background: #000; padding: 50px; text-align: center; border-top: 1px solid #222; margin-top: 50px; }
+.footer-logo { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 10px; color: var(--text-main); }
+.disclaimer { font-size: 0.8rem; color: #555; margin-top: 10px; }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero-section { flex-direction: column; text-align: center; padding-top: 120px; }
+    .hero-visual { margin-top: 50px; }
+    .apod-wrapper { grid-template-columns: 1fr; }
+    .nav-links { display: none; } /* Simplified for this code snippet */
+    h1.glitch { font-size: 3rem; }
+}
